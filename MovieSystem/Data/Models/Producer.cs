@@ -7,7 +7,7 @@
     public class Producer
     {
         [Key]
-        public int Id { get; set; }
+        public int Id { get; init; }
 
         [Required]
         [MaxLength(NameMaxLength)]

@@ -2,21 +2,22 @@
 {
     using System.ComponentModel.DataAnnotations;
 
-    using static DataConstants.Actior;
+    using static DataConstants.Cinema;
 
-    public class Actior
+    public class Cinema
     {
         [Key]
         public int Id { get; init; }
-        
+
         [Required]
         [MaxLength(NameMaxLength)]
         public string Name { get; set; }
 
-        public string ImageURL { get; set; }
-
         [Required]
-        [MaxLength(BiographyMaxLength)]
-        public string Biography { get; set; }
+        [MaxLength(DescrpMaxLength)]
+        public string Description { get; set; }
+
+        public string Logo { get; set; }
+
     }
 }
