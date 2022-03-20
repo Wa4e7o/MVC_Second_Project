@@ -1,5 +1,3 @@
-using System;
-
 namespace MovieSystem.Models
 {
     public class ErrorViewModel
