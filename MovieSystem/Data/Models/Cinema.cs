@@ -1,5 +1,6 @@
 ﻿namespace MovieSystem.Data.Models
 {
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     using static DataConstants.Cinema;
@@ -19,5 +20,6 @@
 
         public string Logo { get; set; }
 
+        public List<Movie> Movies { get; set; }
     }
 }
