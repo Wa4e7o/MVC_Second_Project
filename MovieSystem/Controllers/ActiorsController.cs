@@ -1,8 +1,10 @@
 ﻿namespace MovieSystem.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.EntityFrameworkCore;
     using MovieSystem.Data;
     using System.Linq;
+    using System.Threading.Tasks;
 
     public class ActiorsController : Controller
     {
@@ -14,10 +16,11 @@
             this.data = data;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var baseData = data.Actiors.ToList();
-            return View(baseData);
+            var allActiors = await data.Actiors.ToListAsync();
+            return View(allActiors);
         }
+
     }
 }

@@ -10,14 +10,14 @@
         [Key]
         public int Id { get; init; }
 
-        [Display(Name = "Full Name")]
         [Required]
         [MaxLength(NameMaxLength)]
+        [Display(Name = "Full Name")]
         public string Name { get; set; }
 
-        [Display(Name = "Biography")]
         [Required]
         [MaxLength(BiographyMaxLength)]
+        [Display(Name = "Biography")]
         public string Biography { get; set; }
 
         [Display(Name="Profil Picture Url")]

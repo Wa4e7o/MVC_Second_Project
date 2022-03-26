@@ -1,8 +1,10 @@
 ﻿namespace MovieSystem.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.EntityFrameworkCore;
     using MovieSystem.Data;
     using System.Linq;
+    using System.Threading.Tasks;
 
     public class MoviesController : Controller
     {
@@ -12,11 +14,11 @@
         {
             this.data = data;
         }
-
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var baseData = data.Movies.ToList();
-            return View(baseData);
+            var allMovies = await data.Producers.ToListAsync();
+            return View(allMovies);
         }
+
     }
 }
