@@ -24,33 +24,41 @@
                     {
                         new Cinema()
                         {
-                            Name = "Cinema 1",
+                            Name = "Cinema City",
                             Logo = "https://www.cinemacity.bg/xmedia/img/10106/default-placeholder.png",
-                            Description = "This is the description of the first cinema"
+                            Description = "Cinema City Bulgaria is part of Cineworld PLC Group " +
+                            "- one of the leading film chains in Europe."
                         },
                         new Cinema()
                         {
-                            Name = "Cinema 2",
+                            Name = "Sky Cinema",
                             Logo = "https://storyfactory.uk/wp-content/uploads/2020/01/sky-cinema-nowtv.png",
-                            Description = "This is the description of the first cinema"
+                            Description = "Sky Cinema is owned by Sky Group. They have over 3,000 cinemas across the UK. " +
+                            "They have been on the market since 2003"
                         },
                         new Cinema()
                         {
-                            Name = "Cinema 3",
+                            Name = "Cinema Arena",
                             Logo = "http://themall.bg/wp-content/uploads/2016/07/arenathemall-logo.jpg",
-                            Description = "This is the description of the first cinema"
+                            Description = "The largest Bulgarian film chain in Bulgaria operates 7 cinemas " +
+                            "with 45 halls in 5 cities - Sofia, Varna, Plovdiv, Pleven and Smolyan."
                         },
                         new Cinema()
                         {
-                            Name = "Cinema 4",
+                            Name = "Cineland",
                             Logo = "https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/47379962105723.5a84ee1395f12.png",
-                            Description = "This is the description of the first cinema"
+                            Description = "CINELAND is a chain of cinemas with sites in Pernik, " +
+                            "Veliko Tarnovo, Pleven, Gabrovo, Karlovo, Targovishte and Sapareva Banya, " +
+                            "as well as five summer cinemas in Pernik, Veliko Tarnovo, Kiten, Primorsko and Ahtopol. " +
+                            "On December 16, 2021 the last cinema was opened from the chain in Mall Pernik."
                         },
                         new Cinema()
                         {
-                            Name = "Cinema 5",
+                            Name = "UFO Cinema",
                             Logo = "http://dotnethow.net/images/cinemas/cinema-5.jpeg",
-                            Description = "This is the description of the first cinema"
+                            Description = "Nazareth cinema, also known as UFO Cinema, " +
+                            "are cinemas that offer a truly extraterrestrial service and experience. " +
+                            "Something unforgettable and unseen in the world."
                         },
                     });
 
@@ -169,7 +177,7 @@
                         {
                             Name = "Ghost",
                             Description = "This is the Ghost movie description",
-                            Price = 39.50,
+                            Price = 15.50,
                             ImgUrl = "http://dotnethow.net/images/movies/movie-4.jpeg",
                             StartDate = DateTime.Now,
                             EndDate = DateTime.Now.AddDays(7),
@@ -193,7 +201,7 @@
                         {
                             Name = "Scoob",
                             Description = "This is the Scoob movie description",
-                            Price = 39.50,
+                            Price = 45.50,
                             ImgUrl = "http://dotnethow.net/images/movies/movie-7.jpeg",
                             StartDate = DateTime.Now.AddDays(-10),
                             EndDate = DateTime.Now.AddDays(-2),
@@ -205,7 +213,7 @@
                         {
                             Name = "Cold Soles",
                             Description = "This is the Cold Soles movie description",
-                            Price = 39.50,
+                            Price = 20.50,
                             ImgUrl = "http://dotnethow.net/images/movies/movie-8.jpeg",
                             StartDate = DateTime.Now.AddDays(3),
                             EndDate = DateTime.Now.AddDays(20),

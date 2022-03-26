@@ -16,7 +16,11 @@
         }
         public async Task<IActionResult> Index()
         {
-            var allMovies = await data.Producers.ToListAsync();
+            var allMovies = await data
+                .Movies
+                .Include(m => m.Cinema)
+                .OrderBy(m => m.Name)
+                .ToListAsync();
             return View(allMovies);
         }
 

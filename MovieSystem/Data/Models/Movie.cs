@@ -13,10 +13,12 @@
 
         [Required]
         [MaxLength(NameMaxLength)]
+        [Display(Name ="Title")]
         public string Name { get; set; }
 
         [Required]
         [MaxLength(DescrMaxLength)]
+        [Display(Name ="Movie Intro")]
         public string Description { get; set; }
 
         public double Price { get; set; }
