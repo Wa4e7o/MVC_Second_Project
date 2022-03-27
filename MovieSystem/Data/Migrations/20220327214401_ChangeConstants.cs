@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace MovieSystem.Migrations
+namespace MovieSystem.Data.Migrations
 {
-    public partial class SeedDb : Migration
+    public partial class ChangeConstants : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,7 +13,7 @@ namespace MovieSystem.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(75)", maxLength: 75, nullable: false),
                     Biography = table.Column<string>(type: "nvarchar(max)", maxLength: 5000, nullable: false),
                     ImageURL = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
@@ -28,7 +28,7 @@ namespace MovieSystem.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(80)", maxLength: 80, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(4000)", maxLength: 4000, nullable: false),
                     Logo = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
@@ -43,7 +43,7 @@ namespace MovieSystem.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(85)", maxLength: 85, nullable: false),
                     ImageURL = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Biography = table.Column<string>(type: "nvarchar(max)", maxLength: 5000, nullable: false)
                 },
@@ -58,7 +58,7 @@ namespace MovieSystem.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(45)", maxLength: 45, nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(3500)", maxLength: 3500, nullable: false),
                     Price = table.Column<double>(type: "float", nullable: false),
                     ImgUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),

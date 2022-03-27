@@ -3,23 +3,28 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
     using MovieSystem.Data;
-    using System.Linq;
+    using MovieSystem.Services.Actiors;
     using System.Threading.Tasks;
 
     public class ActiorsController : Controller
     {
 
-        private readonly MovieSystemDbContext data;
+        private readonly IActiorsService _data;
 
-        public ActiorsController(MovieSystemDbContext data)
+        public ActiorsController(IActiorsService data)
         {
-            this.data = data;
+            this._data = data;
         }
 
         public async Task<IActionResult> Index()
         {
-            var allActiors = await data.Actiors.ToListAsync();
+            var allActiors = await _data.GetAll();
             return View(allActiors);
+        }
+
+        public IActionResult Create()
+        {
+            return View();
         }
 
     }

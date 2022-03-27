@@ -8,6 +8,7 @@ namespace MovieSystem
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using MovieSystem.Data;
+    using MovieSystem.Services.Actiors;
 
     public class Startup
     {
@@ -24,6 +25,8 @@ namespace MovieSystem
             services.AddDbContext<MovieSystemDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnectionString")));
+
+            services.AddScoped<IActiorsService, ActiorsService>();
 
             services.AddControllersWithViews();
         }
