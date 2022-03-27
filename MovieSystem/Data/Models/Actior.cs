@@ -10,17 +10,18 @@
         [Key]
         public int Id { get; init; }
 
-        [Required]
+        [Required(ErrorMessage = "Full Name is Required")]
         [MaxLength(NameMaxLength)]
         [Display(Name = "Full Name")]
         public string Name { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Bio is Required")]
         [MaxLength(BiographyMaxLength)]
         [Display(Name = "Biography")]
         public string Biography { get; set; }
 
-        [Display(Name="Profil Picture Url")]
+        [Required(ErrorMessage ="Profil Picture is Required")]
+        [Display(Name="Profil Picture")]
         public string ImageURL { get; set; }
 
         public List<ConnectionTable> ConnectionTables { get; set; }

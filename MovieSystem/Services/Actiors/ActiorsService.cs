@@ -31,7 +31,9 @@ namespace MovieSystem.Services.Actiors
 
         public void Add(Actior actior) 
         {
-            
+            _data.Actiors.Add(actior);
+
+            _data.SaveChanges();
         }
 
         public Actior Update(int id, Actior newActior)

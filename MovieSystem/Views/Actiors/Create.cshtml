@@ -13,35 +13,33 @@
             <div class="col-md-8 offset-2">
                 <form asp-action="Create">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group text-center">
+                        <img id="ProfilPicturePreview" />
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Name" class="control-label"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Biography" class="control-label"></label>
+                        <input asp-for="Biography" class="form-control" />
+                        <span asp-validation-for="Biography" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="ImageURL" class="control-label"></label>
+                        <input asp-for="ImageURL" class="form-control" />
+                        <span asp-validation-for="ImageURL" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-outline-success float-right" />
+                        <a class="btn btn-outline-secondary" asp-action="Index">Show all Actors</a>
+                    </div>
                 </form>
-
-                <div class="form-group text-center">
-                    <img id="ProfilPicturePreview" />
-                </div>
-
-                <div class="form-group">
-                    <label asp-for="Name" class="control-label"></label>
-                    <input asp-for="Name" class="form-control" />
-                    <span asp-validation-for="Name" class="text-danger"></span>
-                </div>
-
-                <div class="form-group">
-                    <label asp-for="Biography" class="control-label"></label>
-                    <input asp-for="Biography" class="form-control" />
-                    <span asp-validation-for="Biography" class="text-danger"></span>
-                </div>
-
-                <div class="form-group">
-                    <label asp-for="ImageURL" class="control-label"></label>
-                    <input asp-for="ImageURL" class="form-control" />
-                    <span asp-validation-for="ImageURL" class="text-danger"></span>
-                </div>
-
-                <div class="form-group">
-                    <input type="submit" value="Create" class="btn btn-outline-success float-right" />
-                    <a class="btn btn-outline-secondary" asp-action="Index">Show all Actors</a>
-                </div>
-
             </div>
         </div>
     </div>
@@ -49,6 +47,12 @@
 
 @section Scripts{
     <script>
+
+        $(document).ready(function () {
+            var output = document.getElementById('ProfilePicturePreview');
+            output.src = $("ImageURL").val();
+        })
+
         $("#ImageURL").on("change", function () {
             var output = document.getElementById('ProfilPicturePreview');
             output.src = $(this).val();
