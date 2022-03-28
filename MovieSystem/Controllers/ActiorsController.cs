@@ -45,7 +45,7 @@
         {
             var actorDetails =await _data.GetByIdAsync(id);
 
-            if (actorDetails == null) return View("NotExist");
+            if (actorDetails == null) return View("_NotExist");
 
             return View(actorDetails);
         }
@@ -54,7 +54,7 @@
         {
             var actorDetails = await _data.GetByIdAsync(id);
 
-            if (actorDetails == null) return View("NotExist");
+            if (actorDetails == null) return View("_NotExist");
             return View(actorDetails);
         }
 
@@ -77,7 +77,7 @@
         {
             var actorDetails = await _data.GetByIdAsync(id);
 
-            if (actorDetails == null) return View("NotExist");
+            if (actorDetails == null) return View("_NotExist");
             return View(actorDetails);
         }
 
@@ -87,7 +87,7 @@
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var actorDetails = await _data.GetByIdAsync(id);
-            if (actorDetails == null) return View("NotExist");
+            if (actorDetails == null) return View("_NotExist");
 
             await _data.DeleteAsync(id);
             return RedirectToAction(nameof(Index));
