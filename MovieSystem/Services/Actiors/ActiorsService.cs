@@ -16,7 +16,7 @@ namespace MovieSystem.Services.Actiors
             this._data = data;
         }
 
-        public async Task<IEnumerable<Actior>> GetAll()
+        public async Task<IEnumerable<Actior>> GetAllAsync()
         {
             var result = await _data.Actiors.ToListAsync();
 
@@ -24,26 +24,31 @@ namespace MovieSystem.Services.Actiors
         }
 
         //Get one actior
-        public Actior GetById(int id)
+        public async Task<Actior> GetByIdAsync(int id)
         {
-            throw new System.NotImplementedException();
+            var result = await _data.Actiors.FirstOrDefaultAsync(a => a.Id == id);
+            return result;
         }
 
-        public void Add(Actior actior) 
+        public async Task AddAsync(Actior actior) 
         {
-            _data.Actiors.Add(actior);
+            await _data.Actiors.AddAsync(actior);
 
-            _data.SaveChanges();
+            await _data.SaveChangesAsync();
         }
 
-        public Actior Update(int id, Actior newActior)
+        public async  Task<Actior> UpdateAsync(int id, Actior newActior)
         {
-            throw new System.NotImplementedException();
+            _data.Update(newActior);
+            await _data.SaveChangesAsync();
+            return newActior;
         }
         
-        public void Delete(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new System.NotImplementedException();
+            var result = await _data.Actiors.FirstOrDefaultAsync(a => a.Id == id);
+             _data.Actiors.Remove(result);
+            await _data.SaveChangesAsync();
         }
 
 

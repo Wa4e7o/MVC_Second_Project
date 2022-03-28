@@ -6,14 +6,14 @@
 
     public interface IActiorsService
     {
-        Task<IEnumerable<Actior>> GetAll();
+        Task<IEnumerable<Actior>> GetAllAsync();
         
-        Actior GetById(int id);
+        Task<Actior> GetByIdAsync(int id);
 
-        void Add(Actior actior);
+        Task AddAsync(Actior actior);
 
-        Actior Update(int id, Actior newActior);
+        Task<Actior> UpdateAsync(int id, Actior newActior);
 
-        void Delete(int id);
+        Task DeleteAsync(int id);
     }
 }
