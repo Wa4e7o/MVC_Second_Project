@@ -1,19 +1,9 @@
 ﻿namespace MovieSystem.Services.Actiors
 {
     using MovieSystem.Data.Models;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
+    using MovieSystem.Models.Base;
 
-    public interface IActiorsService
+    public interface IActiorsService : IEntityBaseRepository<Actior>
     {
-        Task<IEnumerable<Actior>> GetAllAsync();
-        
-        Task<Actior> GetByIdAsync(int id);
-
-        Task AddAsync(Actior actior);
-
-        Task<Actior> UpdateAsync(int id, Actior newActior);
-
-        Task DeleteAsync(int id);
     }
 }

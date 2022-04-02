@@ -1,14 +1,15 @@
 ﻿namespace MovieSystem.Data.Models
 {
+    using MovieSystem.Models.Base;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     using static DataConstants.Producer;
 
-    public class Producer
+    public class Producer : IEntityBase
     {
         [Key]
-        public int Id { get; init; }
+        public int Id { get; set; }
 
         [Required]
         [MaxLength(NameMaxLength)]

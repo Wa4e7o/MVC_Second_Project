@@ -9,6 +9,7 @@ namespace MovieSystem
     using Microsoft.Extensions.Hosting;
     using MovieSystem.Data;
     using MovieSystem.Services.Actiors;
+    using MovieSystem.Services.Producers;
 
     public class Startup
     {
@@ -27,6 +28,8 @@ namespace MovieSystem
                     Configuration.GetConnectionString("DefaultConnectionString")));
 
             services.AddScoped<IActiorsService, ActiorsService>();
+
+            services.AddScoped<IProducersService, ProducersService>();
 
             services.AddControllersWithViews();
         }
