@@ -32,6 +32,7 @@ namespace MovieSystem.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImageURL")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -71,13 +72,13 @@ namespace MovieSystem.Data.Migrations
 
             modelBuilder.Entity("MovieSystem.Data.Models.ConnectionTable", b =>
                 {
-                    b.Property<int>("ActorId")
+                    b.Property<int>("ActiorId")
                         .HasColumnType("int");
 
                     b.Property<int>("MovieId")
                         .HasColumnType("int");
 
-                    b.HasKey("ActorId", "MovieId");
+                    b.HasKey("ActiorId", "MovieId");
 
                     b.HasIndex("MovieId");
 
@@ -160,7 +161,7 @@ namespace MovieSystem.Data.Migrations
                 {
                     b.HasOne("MovieSystem.Data.Models.Actior", "Actior")
                         .WithMany("ConnectionTables")
-                        .HasForeignKey("ActorId")
+                        .HasForeignKey("ActiorId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 

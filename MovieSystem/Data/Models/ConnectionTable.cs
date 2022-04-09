@@ -4,7 +4,7 @@
     {
         // This is a connection table between Actor and Movie. Because there relation is many to many.
 
-        public int ActorId { get; set; }
+        public int ActiorId { get; set; }
         public Actior Actior { get; set; }
 
         public int MovieId { get; set; }

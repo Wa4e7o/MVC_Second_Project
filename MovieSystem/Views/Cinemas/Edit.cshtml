@@ -1,20 +1,20 @@
-﻿@model Producer
+﻿@model Cinema
 
 @{
-    ViewData["Title"] = "Update info for the Producer";
+    ViewData["Title"] = "Update info for Movie theater";
 }
 
 <div class="row text">
     <div class="col-md-8 offset-2">
         <p>
-            <h1 class="text-center">Update Producer</h1>>
+            <h1 class="text-center">Update Cinema</h1>>
         </p>
         <div class="row">
             <div class="col-md-8 offset-2">
                 <form asp-action="Edit">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     <div class="form-group text-center">
-                        <img class="border-info rounded-bottom" style="max-width: 150px" id="ProfilePicturePreview" />
+                        <img class="border-info rounded-bottom" style="max-width: 150px" id="LogoPreview" />
                     </div>
 
                     <div class="form-group">
@@ -24,20 +24,20 @@
                     </div>
 
                     <div class="form-group">
-                        <label asp-for="Biography" class="control-label"></label>
-                        <input asp-for="Biography" class="form-control" />
-                        <span asp-validation-for="Biography" class="text-danger"></span>
+                        <label asp-for="Description" class="control-label"></label>
+                        <input asp-for="Description" class="form-control" />
+                        <span asp-validation-for="Description" class="text-danger"></span>
                     </div>
 
                     <div class="form-group">
-                        <label asp-for="ImageURL" class="control-label"></label>
-                        <input asp-for="ImageURL" class="form-control" />
-                        <span asp-validation-for="ImageURL" class="text-danger"></span>
+                        <label asp-for="Logo" class="control-label"></label>
+                        <input asp-for="Logo" class="form-control" />
+                        <span asp-validation-for="Logo" class="text-danger"></span>
                     </div>
 
                     <div class="form-group">
                         <input type="submit" value="Update" class="btn btn-outline-success float-right" />
-                        <a class="btn btn-outline-secondary" asp-action="Index">Show all Producers</a>
+                        <a class="btn btn-outline-secondary" asp-action="Index">Show all Movie theaters</a>
                     </div>
                 </form>
             </div>
@@ -49,12 +49,12 @@
     <script>
 
         $(document).ready(function () {
-            var output = document.getElementById('ProfilePicturePreview');
-            output.src = $("#ImageURL").val();
+            var output = document.getElementById('LogoPreview');
+            output.src = $("#Logo").val();
         })
 
-        $("#ImageURL").on("change", function () {
-            var output = document.getElementById('ProfilePicturePreview');
+        $("#Logo").on("change", function () {
+            var output = document.getElementById('LogoPreview');
             output.src = $(this).val();
         })
     </script>

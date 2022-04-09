@@ -27,11 +27,15 @@
         {
             public const int NameMaxLength = 100;
 
+            public const int NameMinLength = 10;
+
             public const int DescrMaxLength = 3500;
+
+            public const int DescrMingLength = 20;
 
             public const double MaxPrice = 1000;
 
-            public const double MingPrice = 5;
+            public const double MinPrice = 5;
         }
     }
 }

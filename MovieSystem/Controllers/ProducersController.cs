@@ -49,10 +49,10 @@
 
         public async Task<IActionResult> Edit(int id)
         {
-            var actorDetails = await _data.GetByIdAsync(id);
+            var producerDetails = await _data.GetByIdAsync(id);
 
-            if (actorDetails == null) return View("_NotExist");
-            return View(actorDetails);
+            if (producerDetails == null) return View("_NotExist");
+            return View(producerDetails);
         }
 
 
@@ -72,10 +72,10 @@
 
         public async Task<IActionResult> Delete(int id)
         {
-            var actorDetails = await _data.GetByIdAsync(id);
+            var producerDetails = await _data.GetByIdAsync(id);
 
-            if (actorDetails == null) return View("_NotExist");
-            return View(actorDetails);
+            if (producerDetails == null) return View("_NotExist");
+            return View(producerDetails);
         }
 
 
@@ -83,8 +83,8 @@
         [HttpPost, ActionName("Delete")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var actorDetails = await _data.GetByIdAsync(id);
-            if (actorDetails == null) return View("_NotExist");
+            var producerDetails = await _data.GetByIdAsync(id);
+            if (producerDetails == null) return View("_NotExist");
 
             await _data.DeleteAsync(id);
             return RedirectToAction(nameof(Index));

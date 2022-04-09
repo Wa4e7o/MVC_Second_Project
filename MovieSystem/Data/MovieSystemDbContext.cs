@@ -28,7 +28,7 @@
                .Entity<ConnectionTable>()
                .HasKey(c => new
                {
-                   c.ActorId,
+                   c.ActiorId,
                    c.MovieId
                });
 
@@ -36,7 +36,7 @@
                .Entity<ConnectionTable>()
                .HasOne(a => a.Actior)
                .WithMany(c => c.ConnectionTables)
-               .HasForeignKey(a => a.ActorId)
+               .HasForeignKey(a => a.ActiorId)
                .OnDelete(DeleteBehavior.Restrict);
 
 

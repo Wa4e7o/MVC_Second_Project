@@ -9,6 +9,8 @@ namespace MovieSystem
     using Microsoft.Extensions.Hosting;
     using MovieSystem.Data;
     using MovieSystem.Services.Actiors;
+    using MovieSystem.Services.Cinemas;
+    using MovieSystem.Services.Movies;
     using MovieSystem.Services.Producers;
 
     public class Startup
@@ -30,6 +32,10 @@ namespace MovieSystem
             services.AddScoped<IActiorsService, ActiorsService>();
 
             services.AddScoped<IProducersService, ProducersService>();
+
+            services.AddScoped<ICinemasService, CinemasService>();
+
+            services.AddScoped<IMoviesService, MoviesService>();
 
             services.AddControllersWithViews();
         }

@@ -10,8 +10,8 @@ using MovieSystem.Data;
 namespace MovieSystem.Data.Migrations
 {
     [DbContext(typeof(MovieSystemDbContext))]
-    [Migration("20220327214401_ChangeConstants")]
-    partial class ChangeConstants
+    [Migration("20220409071424_ChangeUser")]
+    partial class ChangeUser
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -34,6 +34,7 @@ namespace MovieSystem.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImageURL")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")

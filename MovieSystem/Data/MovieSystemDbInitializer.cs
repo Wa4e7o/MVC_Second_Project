@@ -232,94 +232,94 @@
                     {
                     new ConnectionTable()
                     {
-                        ActorId = 1,
+                        ActiorId = 1,
                         MovieId = 1
                     },
                     new ConnectionTable()
                     {
-                        ActorId = 3,
+                        ActiorId = 3,
                         MovieId = 1
                     },
 
                     new ConnectionTable()
                     {
-                        ActorId = 1,
+                        ActiorId = 1,
                         MovieId = 2
                     },
                     new ConnectionTable()
                     {
-                        ActorId = 4,
+                        ActiorId = 4,
                         MovieId = 2
                     },
 
                     new ConnectionTable()
                     {
-                        ActorId = 1,
+                        ActiorId = 1,
                         MovieId = 3
                     },
                     new ConnectionTable()
                     {
-                        ActorId = 2,
+                        ActiorId = 2,
                         MovieId = 3
                     },
                     new ConnectionTable()
                     {
-                        ActorId = 5,
+                        ActiorId = 5,
                         MovieId = 3
                     },
 
                     new ConnectionTable()
                     {
-                        ActorId = 2,
+                        ActiorId = 2,
                         MovieId = 4
                     },
                     new ConnectionTable()
                     {
-                        ActorId = 3,
+                        ActiorId = 3,
                         MovieId = 4
                     },
                     new ConnectionTable()
                     {
-                        ActorId = 4,
+                        ActiorId = 4,
                         MovieId = 4
                     },
 
                     new ConnectionTable()
                     {
-                        ActorId = 2,
+                        ActiorId = 2,
                         MovieId = 5
                     },
                     new ConnectionTable()
                     {
-                        ActorId = 3,
+                        ActiorId = 3,
                         MovieId = 5
                     },
                     new ConnectionTable()
                     {
-                        ActorId = 4,
+                        ActiorId = 4,
                         MovieId = 5
                     },
                     new ConnectionTable()
                     {
-                        ActorId = 5,
+                        ActiorId = 5,
                         MovieId = 5
                     },
 
 
                     new ConnectionTable()
                     {
-                        ActorId = 3,
+                        ActiorId = 3,
                         MovieId = 6
                     },
 
                     new ConnectionTable()
                     {
-                        ActorId = 4,
+                        ActiorId = 4,
                         MovieId = 6
                     },
                     new ConnectionTable()
                     {
-                        ActorId = 5,
+                        ActiorId = 5,
                         MovieId = 6
                     },
                 });

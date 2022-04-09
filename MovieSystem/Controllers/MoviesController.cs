@@ -1,27 +1,37 @@
 ﻿namespace MovieSystem.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
-    using Microsoft.EntityFrameworkCore;
-    using MovieSystem.Data;
-    using System.Linq;
+    using MovieSystem.Services.Movies;
     using System.Threading.Tasks;
 
     public class MoviesController : Controller
     {
-        private readonly MovieSystemDbContext data;
+        private readonly IMoviesService _data;
 
-        public MoviesController(MovieSystemDbContext data)
+        public MoviesController(IMoviesService data)
         {
-            this.data = data;
+            this._data = data;
         }
+
         public async Task<IActionResult> Index()
         {
-            var allMovies = await data
-                .Movies
-                .Include(m => m.Cinema)
-                .OrderBy(m => m.Name)
-                .ToListAsync();
+            var allMovies = await _data.GetAllAsync(n => n.Cinema);
             return View(allMovies);
+        }
+
+        public async Task<IActionResult> Details(int id)
+        {
+            var moviesDetails = await _data.GetMovieByIdAsync(id);
+
+            return View(moviesDetails);
+        }
+
+        public IActionResult Create()
+        {
+            ViewData["Welcome"] = "Welcome in Movie World !";
+            ViewBag.Description = "Here you can find a lot of good movies !";
+
+            return View();
         }
 
     }
