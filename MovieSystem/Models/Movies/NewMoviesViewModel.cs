@@ -10,6 +10,8 @@
 
     public class NewMoviesViewModel
     {
+        public int Id { get; set; }
+
         [Display(Name = "Movie title")]
         [Required(ErrorMessage = " Movie title is required .")]
         [MinLength(NameMinLength)]

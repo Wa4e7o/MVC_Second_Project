@@ -21,6 +21,11 @@
 
         public DbSet<ConnectionTable> ConnectionTables { get; init; }
 
+        public DbSet<Order> Orders { get; init; }
+
+        public DbSet<OrderItem> OrderItems { get; set; }
+
+        public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

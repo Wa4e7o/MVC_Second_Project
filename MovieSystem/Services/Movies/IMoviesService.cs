@@ -12,5 +12,7 @@
         Task<DropdownViewModel> GetMovieDropDownValues();
 
         Task AddNewMovieAsync(NewMoviesViewModel dataMovie);
+
+        Task UpdateMovieAsync(NewMoviesViewModel dataMovie);
     }
 }

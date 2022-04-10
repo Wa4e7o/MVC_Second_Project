@@ -73,5 +73,44 @@
 
             return response;
         }
+
+        public async Task UpdateMovieAsync(NewMoviesViewModel dataMovie)
+        {
+            var dbMovie = await _data.Movies.FirstOrDefaultAsync(m => m.Id == dataMovie.Id);
+
+            if (dbMovie != null)
+            {
+                dbMovie.Name = dataMovie.Name;
+                dbMovie.Description = dataMovie.Description;
+                dbMovie.Price = dataMovie.Price;
+                dbMovie.ImgUrl = dataMovie.ImgUrl;
+                dbMovie.CinemaId = dataMovie.CinemaId;
+                dbMovie.StartDate = dataMovie.StartDate;
+                dbMovie.EndDate = dataMovie.EndDate;
+                dbMovie.MovieCategory = dataMovie.MovieCategory;
+                dbMovie.ProducerId = dataMovie.ProducerId;
+
+                await _data.SaveChangesAsync();
+            }
+
+            // remove existing Actiores
+
+            var existingActiorsData = _data.ConnectionTables.Where(a => a.MovieId == dataMovie.Id).ToList();
+            _data.ConnectionTables.RemoveRange(existingActiorsData);
+            await _data.SaveChangesAsync();
+
+            foreach (var actorId in dataMovie.ActiorIds)
+            {
+                var newConnectionTable = new ConnectionTable()
+                {
+                    MovieId = dataMovie.Id,
+                    ActiorId = actorId
+                };
+
+                await _data.ConnectionTables.AddAsync(newConnectionTable);
+            }
+
+            await _data.SaveChangesAsync();
+        }
     }
 }

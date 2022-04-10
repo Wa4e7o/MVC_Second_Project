@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MovieSystem.Data;
 
 namespace MovieSystem.Data.Migrations
 {
     [DbContext(typeof(MovieSystemDbContext))]
-    partial class MovieSystemDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220410201745_OrderAndOrderItem_Added")]
+    partial class OrderAndOrderItem_Added
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -203,29 +205,6 @@ namespace MovieSystem.Data.Migrations
                     b.ToTable("Producers");
                 });
 
-            modelBuilder.Entity("MovieSystem.Data.Models.ShoppingCartItem", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("Amount")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("MovieId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ShoppingCartId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MovieId");
-
-                    b.ToTable("ShoppingCartItems");
-                });
-
             modelBuilder.Entity("MovieSystem.Data.Models.ConnectionTable", b =>
                 {
                     b.HasOne("MovieSystem.Data.Models.Actior", "Actior")
@@ -281,15 +260,6 @@ namespace MovieSystem.Data.Migrations
                     b.Navigation("Movie");
 
                     b.Navigation("Order");
-                });
-
-            modelBuilder.Entity("MovieSystem.Data.Models.ShoppingCartItem", b =>
-                {
-                    b.HasOne("MovieSystem.Data.Models.Movie", "Movie")
-                        .WithMany()
-                        .HasForeignKey("MovieId");
-
-                    b.Navigation("Movie");
                 });
 
             modelBuilder.Entity("MovieSystem.Data.Models.Actior", b =>
