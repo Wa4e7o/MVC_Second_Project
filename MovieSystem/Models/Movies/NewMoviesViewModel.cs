@@ -51,7 +51,7 @@
 
         [Display(Description = "Select the actors in the movie")]
         [Required(ErrorMessage = "Actor(s) is/are required !")]
-        public List<int> ActorIds { get; set; }
+        public List<int> ActiorIds { get; set; }
 
     }
 }

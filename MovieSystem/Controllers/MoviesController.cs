@@ -1,6 +1,8 @@
 ﻿namespace MovieSystem.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.Rendering;
+    using MovieSystem.Models.Movies;
     using MovieSystem.Services.Movies;
     using System.Threading.Tasks;
 
@@ -26,13 +28,33 @@
             return View(moviesDetails);
         }
 
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            ViewData["Welcome"] = "Welcome in Movie World !";
-            ViewBag.Description = "Here you can find a lot of good movies !";
+            var dropDownMoviesData = await _data.GetMovieDropDownValues();
+
+            ViewBag.Cinemas = new SelectList(dropDownMoviesData.Cinemas, "Id", "Name");
+            ViewBag.Producers = new SelectList(dropDownMoviesData.Producers, "Id", "Name");
+            ViewBag.Actiors = new SelectList(dropDownMoviesData.Actiors, "Id", "Name");
 
             return View();
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Create(NewMoviesViewModel movie)
+        {
+            if (!ModelState.IsValid)
+            {
+                var dropDownMoviesData = await _data.GetMovieDropDownValues();
+
+                ViewBag.Cinemas = new SelectList(dropDownMoviesData.Cinemas, "Id", "Name");
+                ViewBag.Producers = new SelectList(dropDownMoviesData.Producers, "Id", "Name");
+                ViewBag.Actiors = new SelectList(dropDownMoviesData.Actiors, "Id", "Name");
+                return View(movie);
+            }
+
+            await _data.AddNewMovieAsync(movie);
+
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

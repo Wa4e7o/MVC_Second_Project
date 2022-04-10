@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Actior>
 
 @{
-    ViewData["Title"] = "List of Actors";
+    ViewData["Title"] = "List of Actiors";
 }
 
 <div class="row">
@@ -43,10 +43,4 @@
     </div>
 </div>
 
-<div style="position: fixed; right: 25px; bottom: 25px; " class="text=white">
-    <a asp-controller="Actiors" asp-action="Create" class="btn btn-success">
-        <i class="bi bi-plus-circle">
-            Add new Actor
-        </i>
-    </a>
-</div>
+@await Html.PartialAsync("_CreateButtonView", "Actiors")
