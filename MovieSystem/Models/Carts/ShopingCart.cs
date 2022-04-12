@@ -1,8 +1,11 @@
 ﻿namespace MovieSystem.Models.Carts
 {
+    using Microsoft.AspNetCore.Http;
     using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.DependencyInjection;
     using MovieSystem.Data;
     using MovieSystem.Data.Models;
+    using System;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -16,6 +19,18 @@
         public ShopingCart(MovieSystemDbContext data)
         {
             _data = data;
+        }
+
+        public static ShopingCart GetShopingCart(IServiceProvider services)
+        {
+            //With this method we get session data with service provider.
+            ISession session = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
+            var context = services.GetService<MovieSystemDbContext>();
+
+            string cartId = session.GetString("CartId") ?? Guid.NewGuid().ToString();
+            session.SetString("CartId", cartId);
+
+            return new ShopingCart(context) { ShoppingCartId = cartId };
         }
 
         public void AddItemToCart(Movie movie)
@@ -46,9 +61,9 @@
         {
             var shoppingCartItem = _data.ShoppingCartItems.FirstOrDefault(s => s.Movie.Id == movie.Id && s.ShoppingCartId == ShoppingCartId);
 
-            if (shoppingCartItem == null)
+            if (shoppingCartItem != null)
             {
-                if (shoppingCartItem.Amount>1)
+                if (shoppingCartItem.Amount > 1)
                 {
                     shoppingCartItem.Amount--;
                 }
@@ -63,11 +78,11 @@
             _data.SaveChanges();
         }
 
-        public List<ShoppingCartItem> GetShoppingCartItems()
+        public List<ShoppingCartItem> GetShopingCartItems()
         {
             return ShoppingCartItems ?? (ShoppingCartItems = _data.ShoppingCartItems.Where(s => s.ShoppingCartId == ShoppingCartId).Include(s => s.Movie).ToList());
         }
 
-        public double GetShoppingCartTotal() => _data.ShoppingCartItems.Where(s => s.ShoppingCartId == ShoppingCartId).Select(s => s.Movie.Price * s.Amount).Sum();
+        public double GetShopingCartTotal() => _data.ShoppingCartItems.Where(s => s.ShoppingCartId == ShoppingCartId).Select(s => s.Movie.Price * s.Amount).Sum();
     }
 }

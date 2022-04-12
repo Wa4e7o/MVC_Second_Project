@@ -3,11 +3,13 @@ namespace MovieSystem
 {
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Http;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using MovieSystem.Data;
+    using MovieSystem.Models.Carts;
     using MovieSystem.Services.Actiors;
     using MovieSystem.Services.Cinemas;
     using MovieSystem.Services.Movies;
@@ -37,6 +39,11 @@ namespace MovieSystem
 
             services.AddScoped<IMoviesService, MoviesService>();
 
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped(sc => ShopingCart.GetShopingCart(sc));
+
+            services.AddSession();
+
             services.AddControllersWithViews();
         }
 
@@ -57,6 +64,7 @@ namespace MovieSystem
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseSession();
 
             app.UseAuthorization();
 
