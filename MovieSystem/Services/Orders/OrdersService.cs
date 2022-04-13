@@ -17,14 +17,39 @@
             _data = data;
         }
 
-        public Task<List<Order>> GetOrdersByUserIdAsync(string userId)
+        public async Task<List<Order>> GetOrdersByUserIdAsync(string userId)
         {
-            var orders = _data.Orders.Include(o => o.OrderItems).ThenInclude(o => o.Movie).Where(o => o.UserId == userId).ToListAsync();
+            var orders = await _data.Orders.Include(o => o.OrderItems).ThenInclude(o => o.Movie).Where(o => o.UserId == userId).ToListAsync();
+
+            return orders;
         }
 
-        public Task StoreOrderAsync(List<ShoppingCartItem> items, string userId, string userEmailAdress)
+        public async Task StoreOrderAsync(List<ShoppingCartItem> items, string userId, string userEmailAdress)
         {
-            throw new NotImplementedException();
+            var order = new Order()
+            {
+                UserId = userId,
+                Email = userEmailAdress
+            };
+
+            await _data.Orders.AddAsync(order);
+
+            await _data.SaveChangesAsync();
+
+            foreach (var item in items)
+            {
+                var orderItem = new OrderItem()
+                {
+                    Amount = item.Amount,
+                    Price = item.Movie.Price,
+                    MovieId = item.Movie.Id,
+                    OrderId = order.Id
+                };
+
+                await _data.OrderItems.AddAsync(orderItem);
+            }
+
+            await _data.SaveChangesAsync();
         }
     }
 }

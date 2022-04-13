@@ -13,6 +13,7 @@ namespace MovieSystem
     using MovieSystem.Services.Actiors;
     using MovieSystem.Services.Cinemas;
     using MovieSystem.Services.Movies;
+    using MovieSystem.Services.Orders;
     using MovieSystem.Services.Producers;
 
     public class Startup
@@ -38,6 +39,8 @@ namespace MovieSystem
             services.AddScoped<ICinemasService, CinemasService>();
 
             services.AddScoped<IMoviesService, MoviesService>();
+
+            services.AddScoped<IOrdersService, OrdersService>();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped(sc => ShopingCart.GetShopingCart(sc));

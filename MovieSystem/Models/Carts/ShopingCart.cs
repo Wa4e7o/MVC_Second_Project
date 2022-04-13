@@ -8,6 +8,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Threading.Tasks;
 
     public class ShopingCart
     {
@@ -84,5 +85,12 @@
         }
 
         public double GetShopingCartTotal() => _data.ShoppingCartItems.Where(s => s.ShoppingCartId == ShoppingCartId).Select(s => s.Movie.Price * s.Amount).Sum();
+
+        public async Task ClearShopingCartAsync()
+        {
+            var items = await _data.ShoppingCartItems.Where(m => m.ShoppingCartId == ShoppingCartId).ToListAsync();
+            _data.ShoppingCartItems.RemoveRange(items);
+            await _data.SaveChangesAsync();
+        }
     }
 }
