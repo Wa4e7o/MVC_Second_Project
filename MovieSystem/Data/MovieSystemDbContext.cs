@@ -1,9 +1,10 @@
 ﻿namespace MovieSystem.Data
 {
+    using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
     using MovieSystem.Data.Models;
 
-    public class MovieSystemDbContext : DbContext
+    public class MovieSystemDbContext : IdentityDbContext<ApplicationUser>
     {
         public MovieSystemDbContext(DbContextOptions<MovieSystemDbContext> options)
             : base(options)

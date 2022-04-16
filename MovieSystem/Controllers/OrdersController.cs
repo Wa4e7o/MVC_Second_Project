@@ -78,7 +78,7 @@
             await _ordersService.StoreOrderAsync(products, userId, userEmailAddress);
             await _shopingCart.ClearShopingCartAsync();
 
-            return View("OrderPurchased");
+            return View("OrderCompleted");
         }
     }
 }

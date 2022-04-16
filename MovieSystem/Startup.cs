@@ -1,14 +1,17 @@
 
 namespace MovieSystem
 {
+    using Microsoft.AspNetCore.Authentication.Cookies;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using MovieSystem.Data;
+    using MovieSystem.Data.Models;
     using MovieSystem.Models.Carts;
     using MovieSystem.Services.Actiors;
     using MovieSystem.Services.Cinemas;
@@ -45,6 +48,15 @@ namespace MovieSystem
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped(sc => ShopingCart.GetShopingCart(sc));
 
+            //Here add Authentication and authorization
+            services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<MovieSystemDbContext>();
+            services.AddMemoryCache();
+            services.AddSession();
+            services.AddAuthentication(options =>
+             {
+                 options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+             });
+
             services.AddSession();
 
             services.AddControllersWithViews();
@@ -69,6 +81,10 @@ namespace MovieSystem
             app.UseRouting();
             app.UseSession();
 
+            //Authorization
+            app.UseAuthentication();
+            app.UseAuthorization();
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -79,6 +95,8 @@ namespace MovieSystem
             });
 
             MovieSystemDbInitializer.Seed(app);
+
+            MovieSystemDbInitializer.SeedUsersAndRolesAsync(app).Wait();
         }
     }
 }

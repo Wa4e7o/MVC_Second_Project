@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MovieSystem.Data;
 
 namespace MovieSystem.Data.Migrations
 {
     [DbContext(typeof(MovieSystemDbContext))]
-    partial class MovieSystemDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220415192349_HElp")]
+    partial class HElp
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
