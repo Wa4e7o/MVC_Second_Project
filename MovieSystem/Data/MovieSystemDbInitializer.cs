@@ -364,7 +364,7 @@
                         EmailConfirmed = true,
                     };
 
-                    await userManager.CreateAsync(newAdminUser, "Codegame12345@s");
+                    await userManager.CreateAsync(newAdminUser, "IvanMinchev12345?@im");
                     await userManager.AddToRoleAsync(newAdminUser, UserRoles.Admin);
                 }
 

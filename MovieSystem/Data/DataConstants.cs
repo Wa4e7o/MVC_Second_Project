@@ -37,5 +37,14 @@
 
             public const double MinPrice = 5;
         }
+
+        public class ApplicationUser
+        {
+            public const int NameMinLength = 7;
+            public const int NameMaxLength = 30;
+
+            public const int PassWordMinLength = 5;          
+            public const int PassWordMaxLength = 50;
+        }
     }
 }
